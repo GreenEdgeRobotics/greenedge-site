@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth lang-en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Dynamic title/description (updated by JS on toggle) -->
+  <title id="pageTitle">GreenEdge Robotics — Autonomous Mowing for Golf & Luxury Resorts</title>
+  <meta id="pageDesc" name="description" content="Premium autonomous robotic mowers for golf courses, luxury resorts, and large estates in Mexico. Lower OPEX, quiet operation, fleet-ready reliability, and zero on-site supervision." />
+  <meta name="theme-color" content="#0b1713" />
+
+  <!-- Open Graph / Twitter (static but fits both) -->
+  <meta property="og:title" content="GreenEdge Robotics — Autonomous Mowing for Golf & Resorts" />
+  <meta property="og:description" content="Autonomous robotic mowing for premium properties in Mexico." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://greenedgerobotics.mx" />
+  <meta property="og:image" content="hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="hero.jpg" />
+
+  <!-- Favicon (inline) -->
+  <link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="%230b1713"/><path d="M46 18c-8 2-14 6-18 12-3 4-5 9-6 14a1.5 1.5 0 0 0 2.3 1.6c8.2-4.5 14-10.7 17.1-16.4.8-1.5-1.1-3-2.5-2 0 0-7.5 5.2-11.5 11.6-.8 1.2-2.6.4-2.1-.9 2.1-6 7.8-13.3 21-19.9Z" fill="%23A7F3D0"/></svg>' />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GreenEdge Robotics",
+    "url": "https://greenedgerobotics.mx",
+    "email": "info@greenedgerobotics.mx",
+    "telephone": "+52 322 170 2113",
+    "logo": "hero.jpg"
+  }
+  </script>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 900:'#0b1713',800:'#0e201b',700:'#143028',600:'#165a4b',500:'#10b981',400:'#34d399' }
+          },
+          fontFamily: {
+            display:['ui-sans-serif','system-ui','Inter','Helvetica','Arial','sans-serif'],
+            body:['ui-sans-serif','system-ui','Inter','Helvetica','Arial','sans-serif']
+          },
+          boxShadow:{ soft:'0 10px 30px rgba(0,0,0,.25)' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .hero-img{ background-image:linear-gradient(180deg,rgba(11,23,19,.35),rgba(11,23,19,.8)),url('hero.jpg'); background-size:cover; background-position:center 45%;}
+    .glass{ background:rgba(255,255,255,.06); backdrop-filter:saturate(160%) blur(10px); }
+    .fade{ opacity:0; transform:translateY(12px); transition:opacity .7s, transform .7s; }
+    .fade.show{ opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion: reduce){ .fade{transition:none} }
+    .focus-ring:focus-visible{ outline:3px solid #34d399; outline-offset:2px; }
+    .leaf{ background:radial-gradient(100% 100% at 50% 0%, rgba(52,211,153,.35) 0%, rgba(16,185,129,.08) 45%, transparent 60%); }
+
+    /* Bilingual: show/hide via html.lang-en/lang-es classes */
+    [data-en],[data-es]{ display:inline; }
+    .lang-en [data-es]{ display:none !important; }
+    .lang-es [data-en]{ display:none !important; }
+  </style>
+</head>
+
+<body class="bg-brand-900 text-white font-body">
+  <a href="#main" class="sr-only focus:not-sr-only focus-ring absolute left-4 top-4 z-50 bg-white/10 px-3 py-2 rounded">Skip to content</a>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-white/5 bg-brand-900/80 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/15 ring-1 ring-brand-500/30">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6C12.5 8.8 8 13.2 6 20c6.2-3.4 10.5-8 12-12" stroke="#34D399" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <div class="leading-tight">
+          <p class="font-semibold tracking-tight">GreenEdge Robotics</p>
+          <p class="text-xs text-white/60">Mexico</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#solutions" class="hover:text-brand-400"><span data-en>Solutions</span><span data-es>Soluciones</span></a>
+        <a href="#benefits" class="hover:text-brand-400"><span data-en>Benefits</span><span data-es>Beneficios</span></a>
+        <a href="#process"  class="hover:text-brand-400"><span data-en>Process</span><span data-es>Proceso</span></a>
+        <a href="#case"     class="hover:text-brand-400"><span data-en>Case Study</span><span data-es>Caso</span></a>
+        <a href="#faq"      class="hover:text-brand-400"><span data-en>FAQ</span><span data-es>FAQ</span></a>
+        <a href="#contact"  class="hover:text-brand-400"><span data-en>Contact</span><span data-es>Contacto</span></a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <!-- EN whatsapp -->
+        <a data-en id="ctaWAen"
+           href="https://wa.me/523221702113?text=Hi%20GreenEdge%2C%20I%27d%20like%20to%20discuss%20autonomous%20mowing%20for%20my%20golf%20course%2Fresort."
+           class="focus-ring rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-black hover:bg-emerald-400">
+          Talk to Sales on WhatsApp
+        </a>
+        <!-- ES whatsapp -->
+        <a data-es id="ctaWAes"
+           href="https://wa.me/523221702113?text=Hola%20GreenEdge%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mantenimiento%20aut%C3%B3nomo%20para%20mi%20campo%20de%20golf%2Fresort."
+           class="focus-ring rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-black hover:bg-emerald-400">
+          Hablar por WhatsApp
+        </a>
+
+        <a data-en href="mailto:info@greenedgerobotics.mx?subject=Quote%20Request%20%7C%20GreenEdge%20Robotics"
+           class="focus-ring rounded-lg bg-white/10 px-4 py-2 text-sm hover:bg-white/15">Email Us</a>
+        <a data-es href="mailto:info@greenedgerobotics.mx?subject=Solicitud%20de%20Cotizaci%C3%B3n%20%7C%20GreenEdge%20Robotics"
+           class="focus-ring rounded-lg bg-white/10 px-4 py-2 text-sm hover:bg-white/15">Escríbenos</a>
+
+        <!-- Language toggle -->
+        <button id="langToggle" class="focus-ring rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-white/15" aria-label="Toggle language">
+          ES
+        </button>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="md:hidden focus-ring rounded-lg bg-white/10 p-2" aria-controls="mnav" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <nav id="mnav" class="hidden md:hidden border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-6 py-3 grid gap-3 text-sm">
+        <a class="py-2 hover:text-brand-400" href="#solutions"><span data-en>Solutions</span><span data-es>Soluciones</span></a>
+        <a class="py-2 hover:text-brand-400" href="#benefits"><span data-en>Benefits</span><span data-es>Beneficios</span></a>
+        <a class="py-2 hover:text-brand-400" href="#process"><span data-en>Process</span><span data-es>Proceso</span></a>
+        <a class="py-2 hover:text-brand-400" href="#case"><span data-en>Case Study</span><span data-es>Caso</span></a>
+        <a class="py-2 hover:text-brand-400" href="#faq"><span data-en>FAQ</span><span data-es>FAQ</span></a>
+        <a class="py-2 hover:text-brand-400" href="#contact"><span data-en>Contact</span><span data-es>Contacto</span></a>
+
+        <div class="pt-2 flex gap-2">
+          <a data-en class="flex-1 rounded bg-emerald-500 px-4 py-2 text-center font-semibold text-black" href="https://wa.me/523221702113?text=Hi%20GreenEdge%2C%20I%27d%20like%20to%20discuss%20autonomous%20mowing%20for%20my%20golf%20course%2Fresort.">WhatsApp</a>
+          <a data-es class="flex-1 rounded bg-emerald-500 px-4 py-2 text-center font-semibold text-black" href="https://wa.me/523221702113?text=Hola%20GreenEdge%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mantenimiento%20aut%C3%B3nomo%20para%20mi%20campo%20de%20golf%2Fresort.">WhatsApp</a>
+          <button id="langToggleM" class="flex-1 rounded bg-white/10 px-4 py-2 text-center">ES</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main id="main">
+    <section class="hero-img relative isolate">
+      <div class="mx-auto max-w-7xl px-6 pt-20 pb-28 md:pb-40">
+        <div class="leaf absolute inset-0 pointer-events-none"></div>
+        <div class="max-w-3xl">
+          <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
+            <span data-en>Autonomous mowing for <span class="text-brand-400">golf courses</span> & luxury resorts</span>
+            <span data-es>Corte autónomo para <span class="text-brand-400">campos de golf</span> y resorts de lujo</span>
+          </h1>
+          <p class="mt-5 max-w-2xl text-white/80">
+            <span data-en>Keep properties pristine while lowering operating costs. Quiet, premium robotic mowers—fleet-ready, dependable, and sustainable across Mexico.</span>
+            <span data-es>Mantén tus áreas impecables reduciendo costos operativos. Robots cortacésped silenciosos y premium—listos para flotas, confiables y sostenibles en México.</span>
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a data-en href="https://wa.me/523221702113?text=Hi%20GreenEdge%2C%20I%27d%20like%20to%20discuss%20autonomous%20mowing%20for%20my%20golf%20course%2Fresort."
+               class="focus-ring rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-black shadow-soft hover:bg-emerald-400">Talk to Sales on WhatsApp</a>
+            <a data-es href="https://wa.me/523221702113?text=Hola%20GreenEdge%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mantenimiento%20aut%C3%B3nomo%20para%20mi%20campo%20de%20golf%2Fresort."
+               class="focus-ring rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-black shadow-soft hover:bg-emerald-400">Hablar por WhatsApp</a>
+
+            <a data-en href="#contact" class="focus-ring rounded-lg bg-white/10 px-5 py-3 hover:bg-white/15">Get a quote</a>
+            <a data-es href="#contact" class="focus-ring rounded-lg bg-white/10 px-5 py-3 hover:bg-white/15">Solicitar cotización</a>
+          </div>
+        </div>
+
+        <p class="pointer-events-none absolute left-1/2 top-[60%] -translate-x-1/2 text-center text-xl sm:text-2xl md:text-4xl font-extrabold text-white/95 drop-shadow-[0_2px_4px_rgba(0,0,0,.6)]">
+          <span data-en>Precision. Efficiency. Sustainability.</span>
+          <span data-es>Precisión. Eficiencia. Sostenibilidad.</span>
+        </p>
+
+        <!-- Badges -->
+        <div class="mt-24 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="glass rounded-xl p-5 fade">
+            <div class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded bg-white/10"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 3l7 4v6c0 4.4-3.1 6.9-7 8-3.9-1.1-7-3.6-7-8V7l7-4Z" fill="#34D399"/></svg></div>
+            <p class="font-semibold"><span data-en>Fleet-ready</span><span data-es>Listo para flotas</span></p>
+            <p class="text-sm text-white/70"><span data-en>Reliable for large-area operations.</span><span data-es>Confiable para grandes superficies.</span></p>
+          </div>
+          <div class="glass rounded-xl p-5 fade">
+            <div class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded bg-white/10"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2v3m0 14v3m9-9h-3M6 12H3m14.5 5.5L16 16m-8 0-1.5 1.5M16 8l1.5-1.5M8 8 6.5 6.5" stroke="#34D399" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <p class="font-semibold"><span data-en>RTK-GPS ready</span><span data-es>Compatible con RTK-GPS</span></p>
+            <p class="text-sm text-white/70"><span data-en>High-precision navigation options.</span><span data-es>Navegación de alta precisión.</span></p>
+          </div>
+          <div class="glass rounded-xl p-5 fade">
+            <div class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded bg-white/10"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 3s7 7 7 11a7 7 0 1 1-14 0c0-4 7-11 7-11Z" fill="#34D399"/></svg></div>
+            <p class="font-semibold"><span data-en>Weather-resistant</span><span data-es>Resistente al clima</span></p>
+            <p class="text-sm text-white/70"><span data-en>Designed for real-world conditions.</span><span data-es>Diseñado para condiciones reales.</span></p>
+          </div>
+          <div class="glass rounded-xl p-5 fade">
+            <div class="mb-3 inline-flex h-9 w-9 items-center justify-center rounded bg-white/10"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 10h4l6-4v12l-6-4H5zM17 9a3 3 0 0 1 0 6" stroke="#34D399" stroke-width="1.5" fill="none"/></svg></div>
+            <p class="font-semibold"><span data-en>Quiet 60–67 dB</span><span data-es>Silencioso 60–67 dB</span></p>
+            <p class="text-sm text-white/70"><span data-en>Low noise for premium experiences.</span><span data-es>Bajo ruido para experiencias premium.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions -->
+    <section id="solutions" class="relative py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-6">
+        <h2 class="text-3xl md:text-4xl font-display font-bold fade">
+          <span data-en>Solutions</span><span data-es>Soluciones</span>
+        </h2>
+        <p class="mt-3 text-white/70 max-w-2xl fade">
+          <span data-en>Purpose-built options for premium landscapes in Mexico.</span>
+          <span data-es>Opciones diseñadas para paisajes premium en México.</span>
+        </p>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <article class="glass rounded-2xl p-6 fade">
+            <h3 class="font-semibold text-xl"><span data-en>Golf Courses</span><span data-es>Campos de Golf</span></h3>
+            <p class="mt-3 text-white/80 text-sm">
+              <span data-en>Fairways, rough and practice areas with coordinated fleets for consistent daily cuts and healthy turf.</span>
+              <span data-es>Fairways, rough y áreas de práctica con flotas coordinadas para cortes diarios consistentes y césped saludable.</span>
+            </p>
+            <ul class="mt-4 text-sm text-white/70 space-y-2">
+              <li><span data-en>• Fleet coordination & dispatch</span><span data-es>• Coordinación y despacho de flota</span></li>
+              <li><span data-en>• Low noise for early/late windows</span><span data-es>• Bajo ruido para horarios tempranos/tardíos</span></li>
+              <li><span data-en>• Consistent height-of-cut</span><span data-es>• Altura de corte consistente</span></li>
+            </ul>
+          </article>
+
+          <article class="glass rounded-2xl p-6 fade">
+            <h3 class="font-semibold text-xl"><span data-en>Luxury Resorts</span><span data-es>Resorts de Lujo</span></h3>
+            <p class="mt-3 text-white/80 text-sm">
+              <span data-en>Immaculate greens around villas, pools, and pathways with minimal disruption to guests.</span>
+              <span data-es>Áreas impecables alrededor de villas, albercas y caminos con mínima interrupción a los huéspedes.</span>
+            </p>
+            <ul class="mt-4 text-sm text-white/70 space-y-2">
+              <li><span data-en>• Guest-friendly quiet</span><span data-es>• Silencioso para huéspedes</span></li>
+              <li><span data-en>• Perimeter & zone schedules</span><span data-es>• Programación por perímetros y zonas</span></li>
+              <li><span data-en>• Night / off-peak operation</span><span data-es>• Operación nocturna o fuera de pico</span></li>
+            </ul>
+          </article>
+
+          <article class="glass rounded-2xl p-6 fade">
+            <h3 class="font-semibold text-xl"><span data-en>Estates & Parks</span><span data-es>Haciendas y Parques</span></h3>
+            <p class="mt-3 text-white/80 text-sm">
+              <span data-en>Large private properties and public spaces benefit from consistent autonomous maintenance.</span>
+              <span data-es>Grandes propiedades privadas y espacios públicos con mantenimiento autónomo consistente.</span>
+            </p>
+            <ul class="mt-4 text-sm text-white/70 space-y-2">
+              <li><span data-en>• Lower OPEX</span><span data-es>• Menor OPEX</span></li>
+              <li><span data-en>• Weather-aware scheduling</span><span data-es>• Programación según clima</span></li>
+              <li><span data-en>• Remote monitoring</span><span data-es>• Monitoreo remoto</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="relative py-20 md:py-28 bg-gradient-to-b from-brand-900 to-brand-800">
+      <div class="mx-auto max-w-7xl px-6">
+        <h2 class="text-3xl md:text-4xl font-display font-bold fade">
+          <span data-en>Why properties choose GreenEdge</span>
+          <span data-es>Por qué eligen GreenEdge</span>
+        </h2>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <div class="glass rounded-2xl p-6 fade">
+            <h3 class="font-semibold"><span data-en>Lower Operating Costs</span><span data-es>Menores Costos Operativos</span></h3>
+            <p class="mt-2 text-white/70 text-sm"><span data-en>Autonomy reduces routine labor and fuel spend while increasing predictability.</span><span data-es>La autonomía reduce mano de obra rutinaria y combustible, aumentando la previsibilidad.</span></p>
+          </div>
+          <div class="glass rounded-2xl p-6 fade">
+            <h3 class="font-semibold"><span data-en>Consistent Agronomy</span><span data-es>Agronomía Consistente</span></h3>
+            <p class="mt-2 text-white/70 text-sm"><span data-en>Daily light cuts improve turf health and surface quality.</span><span data-es>Cortes ligeros diarios mejoran la salud del césped y la calidad de la superficie.</span></p>
+          </div>
+          <div class="glass rounded-2xl p-6 fade">
+            <h3 class="font-semibold"><span data-en>Guest-Friendly Quiet</span><span data-es>Silencioso para Huéspedes</span></h3>
+            <p class="mt-2 text-white/70 text-sm"><span data-en>Operate during off-peak hours without disturbance.</span><span data-es>Opera en horarios de baja afluencia sin molestias.</span></p>
+          </div>
+          <div class="glass rounded-2xl p-6 fade">
+            <h3 class="font-semibold"><span data-en>Sustainability</span><span data-es>Sostenibilidad</span></h3>
+            <p class="mt-2 text-white/70 text-sm"><span data-en>Battery-electric platform aligns with ESG goals.</span><span data-es>Plataforma eléctrica alineada a metas ESG.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="relative py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-6">
+        <h2 class="text-3xl md:text-4xl font-display font-bold fade">
+          <span data-en>How we work</span><span data-es>Cómo trabajamos</span>
+        </h2>
+        <ol class="mt-10 grid gap-6 md:grid-cols-4 text-sm">
+          <li class="glass rounded-2xl p-6 fade"><p class="text-brand-400 font-semibold"><span data-en>1. Site survey</span><span data-es>1. Visita técnica</span></p><p class="mt-2 text-white/70"><span data-en>Assess areas, slopes, access, safety.</span><span data-es>Evaluamos áreas, pendientes, accesos y seguridad.</span></p></li>
+          <li class="glass rounded-2xl p-6 fade"><p class="text-brand-400 font-semibold"><span data-en>2. Plan & quote</span><span data-es>2. Plan y cotización</span></p><p class="mt-2 text-white/70"><span data-en>Fleet size, schedules, service plan.</span><span data-es>Tamaño de flota, horarios y plan de servicio.</span></p></li>
+          <li class="glass rounded-2xl p-6 fade"><p class="text-brand-400 font-semibold"><span data-en>3. Deployment</span><span data-es>3. Implementación</span></p><p class="mt-2 text-white/70"><span data-en>Install, mapping, testing and orientation.</span><span data-es>Instalación, mapeo, pruebas y capacitación.</span></p></li>
+          <li class="glass rounded-2xl p-6 fade"><p class="text-brand-400 font-semibold"><span data-en>4. Ongoing care</span><span data-es>4. Soporte continuo</span></p><p class="mt-2 text-white/70"><span data-en>Remote monitoring + local parts.</span><span data-es>Monitoreo remoto + refacciones locales.</span></p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Case -->
+    <section id="case" class="relative py-20 md:py-28 bg-brand-800">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div class="fade">
+            <h2 class="text-3xl md:text-4xl font-display font-bold"><span data-en>Pilot: 18-hole resort course</span><span data-es>Piloto: Campo resort de 18 hoyos</span></h2>
+            <p class="mt-4 text-white/80">
+              <span data-en>Fleet covering fairways and practice areas with night schedules.</span>
+              <span data-es>Flota cubriendo fairways y áreas de práctica con horarios nocturnos.</span>
+            </p>
+            <ul class="mt-6 grid grid-cols-2 gap-4 text-sm">
+              <li class="glass rounded-xl p-4"><p class="text-white/60"><span data-en>OPEX</span><span data-es>OPEX</span></p><p class="text-2xl font-extrabold text-brand-400">-28%</p></li>
+              <li class="glass rounded-xl p-4"><p class="text-white/60"><span data-en>Noise near villas</span><span data-es>Ruido cercano a villas</span></p><p class="text-2xl font-extrabold text-brand-400">-15 dB</p></li>
+              <li class="glass rounded-xl p-4"><p class="text-white/60"><span data-en>Turf quality</span><span data-es>Calidad del césped</span></p><p class="text-2xl font-extrabold text-brand-400"><span data-en>↑ consistent</span><span data-es>↑ consistente</span></p></li>
+              <li class="glass rounded-xl p-4"><p class="text-white/60">CO₂e</p><p class="text-2xl font-extrabold text-brand-400">- tons/yr</p></li>
+            </ul>
+          </div>
+          <div class="glass rounded-2xl p-6 fade">
+            <h3 class="font-semibold"><span data-en>What’s included</span><span data-es>Qué incluye</span></h3>
+            <ul class="mt-3 text-sm text-white/80 space-y-2">
+              <li><span data-en>• Mapping & route optimization</span><span data-es>• Mapeo y optimización de rutas</span></li>
+              <li><span data-en>• Safety validation & signage</span><span data-es>• Validación de seguridad y señalización</span></li>
+              <li><span data-en>• Remote monitoring & alerts</span><span data-es>• Monitoreo remoto y alertas</span></li>
+              <li><span data-en>• Local spare parts & quick-swap</span><span data-es>• Refacciones locales y unidades de respaldo</span></li>
+            </ul>
+            <a href="#contact" class="mt-6 inline-block rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-black hover:bg-emerald-400">
+              <span data-en>Request full PDF</span><span data-es>Solicitar PDF</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs -->
+    <section class="relative py-16 md:py-24">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="glass rounded-2xl p-6 md:p-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade">
+          <div><p class="text-white/60 text-sm"><span data-en>Cutting width</span><span data-es>Ancho de corte</span></p><p class="text-2xl font-extrabold">500–1200 mm</p></div>
+          <div><p class="text-white/60 text-sm"><span data-en>Height adjust</span><span data-es>Altura de corte</span></p><p class="text-2xl font-extrabold">10–150 mm</p></div>
+          <div><p class="text-white/60 text-sm"><span data-en>Daily area</span><span data-es>Área diaria</span></p><p class="text-2xl font-extrabold"><span data-en>up to multi-hectare fleets</span><span data-es>hasta hectáreas con flota</span></p></div>
+          <div><p class="text-white/60 text-sm">Ingress</p><p class="text-2xl font-extrabold">IPX5–IPX6</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative py-16">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="glass rounded-2xl p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 fade">
+          <div>
+            <h3 class="text-2xl md:text-3xl font-display font-bold"><span data-en>Let’s evaluate your property</span><span data-es>Evaluemos tu propiedad</span></h3>
+            <p class="text-white/70 mt-2"><span data-en>We’ll size the fleet, schedules and ROI. No obligation.</span><span data-es>Dimensionamos flota, horarios y ROI. Sin compromiso.</span></p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a data-en class="rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-black hover:bg-emerald-400 focus-ring" href="https://wa.me/523221702113?text=Hi%20GreenEdge%2C%20I%27d%20like%20to%20discuss%20autonomous%20mowing%20for%20my%20golf%20course%2Fresort.">WhatsApp Sales</a>
+            <a data-es class="rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-black hover:bg-emerald-400 focus-ring" href="https://wa.me/523221702113?text=Hola%20GreenEdge%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mantenimiento%20aut%C3%B3nomo%20para%20mi%20campo%20de%20golf%2Fresort.">WhatsApp Ventas</a>
+            <a data-en class="rounded-lg bg-white/10 px-5 py-3 hover:bg-white/15 focus-ring" href="mailto:info@greenedgerobotics.mx?subject=Site%20Survey%20Request">Email quote</a>
+            <a data-es class="rounded-lg bg-white/10 px-5 py-3 hover:bg-white/15 focus-ring" href="mailto:info@greenedgerobotics.mx?subject=Solicitud%20de%20Visita%20T%C3%A9cnica">Solicitar por email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="relative py-20 md:py-28 bg-brand-800">
+      <div class="mx-auto max-w-7xl px-6">
+        <h2 class="text-3xl md:text-4xl font-display font-bold fade"><span data-en>FAQs</span><span data-es>Preguntas frecuentes</span></h2>
+        <dl class="mt-8 grid gap-4 md:grid-cols-2">
+          <div class="glass rounded-xl p-5 fade">
+            <dt class="font-semibold"><span data-en>Do units require perimeter wire?</span><span data-es>¿Necesitan cable perimetral?</span></dt>
+            <dd class="mt-2 text-white/70 text-sm"><span data-en>We support wire-free mapping/geofencing where conditions permit; we recommend the best option after survey.</span><span data-es>Soportamos mapeo y geocercas sin cable cuando el sitio lo permite; recomendaremos la mejor opción tras la visita.</span></dd>
+          </div>
+          <div class="glass rounded-xl p-5 fade">
+            <dt class="font-semibold"><span data-en>What about rain and irrigation?</span><span data-es>¿Qué pasa con lluvia y riego?</span></dt>
+            <dd class="mt-2 text-white/70 text-sm"><span data-en>Weather-aware schedules avoid saturation. Hardware meets IPX5–IPX6.</span><span data-es>Programación sensible al clima evita saturación. Hardware IPX5–IPX6.</span></dd>
+          </div>
+          <div class="glass rounded-xl p-5 fade">
+            <dt class="font-semibold"><span data-en>How is safety handled?</span><span data-es>¿Cómo manejan la seguridad?</span></dt>
+            <dd class="mt-2 text-white/70 text-sm"><span data-en>Obstacle sensing, controlled speeds and site signage. Night operation recommended in guest zones.</span><span data-es>Detección de obstáculos, velocidades controladas y señalética. Recomendamos operación nocturna en zonas con huéspedes.</span></dd>
+          </div>
+          <div class="glass rounded-xl p-5 fade">
+            <dt class="font-semibold"><span data-en>Support & warranty?</span><span data-es>¿Soporte y garantía?</span></dt>
+            <dd class="mt-2 text-white/70 text-sm"><span data-en>Local spare parts, remote monitoring and fast-swap coverage per SLA.</span><span data-es>Refacciones locales, monitoreo remoto y cobertura de reemplazo rápido según SLA.</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="relative py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div class="fade">
+            <h2 class="text-3xl md:text-4xl font-display font-bold"><span data-en>Contact</span><span data-es>Contacto</span></h2>
+            <p class="mt-3 text-white/80 max-w-xl">
+              <span data-en>Tell us about your site—area sizes (m²), slopes, irrigation windows, and desired cut height. We’ll respond within 1 business day.</span>
+              <span data-es>Cuéntanos sobre tu sitio—áreas (m²), pendientes, horarios de riego y altura de corte. Respondemos en 1 día hábil.</span>
+            </p>
+
+            <div class="mt-6 space-y-3 text-sm">
+              <p><span class="text-white/60">Email:</span> <a class="hover:text-brand-400 underline underline-offset-4" href="mailto:info@greenedgerobotics.mx">info@greenedgerobotics.mx</a></p>
+              <p><span class="text-white/60"><span data-en>WhatsApp</span><span data-es>WhatsApp</span>:</span> <a class="hover:text-brand-400 underline underline-offset-4" href="https://wa.me/523221702113">+52 322 170 2113</a></p>
+              <p class="text-white/60"><span data-en>Coverage: Mexico</span><span data-es>Cobertura: México</span></p>
+            </div>
+          </div>
+
+          <!-- Simple mailto form -->
+          <form class="glass rounded-2xl p-6 grid gap-4 fade" action="mailto:info@greenedgerobotics.mx" method="post" enctype="text/plain">
+            <div>
+              <label class="block text-sm text-white/70"><span data-en>Name</span><span data-es>Nombre</span></label>
+              <input class="mt-1 w-full rounded bg-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-400" name="Name / Nombre" required />
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-white/70">Email</label>
+                <input type="email" class="mt-1 w-full rounded bg-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-400" name="Email" required />
+              </div>
+              <div>
+                <label class="block text-sm text-white/70"><span data-en>Phone / WhatsApp</span><span data-es>Teléfono / WhatsApp</span></label>
+                <input class="mt-1 w-full rounded bg-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-400" name="Phone / Teléfono" />
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-white/70"><span data-en>Total area (m²)</span><span data-es>Área total (m²)</span></label>
+                <input class="mt-1 w-full rounded bg-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-400" name="Area (m2)" />
+              </div>
+              <div>
+                <label class="block text-sm text-white/70"><span data-en>Property type</span><span data-es>Tipo de propiedad</span></label>
+                <select class="mt-1 w-full rounded bg-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-400" name="Type / Tipo">
+                  <option>Golf course</option>
+                  <option>Resort / Hotel</option>
+                  <option>Estate / Park</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm text-white/70"><span data-en>Message</span><span data-es>Mensaje</span></label>
+              <textarea rows="4" class="mt-1 w-full rounded bg-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-400" name="Message / Mensaje" placeholder="Slopes, irrigation times, height-of-cut / Pendientes, horarios de riego, altura de corte"></textarea>
+            </div>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <button class="rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-black hover:bg-emerald-400" type="submit">
+                <span data-en>Send</span><span data-es>Enviar</span>
+              </button>
+              <a data-en class="rounded-lg bg-white/10 px-5 py-3 hover:bg-white/15" href="https://wa.me/523221702113">WhatsApp</a>
+              <a data-es class="rounded-lg bg-white/10 px-5 py-3 hover:bg-white/15" href="https://wa.me/523221702113">WhatsApp</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-brand-900">
+    <div class="mx-auto max-w-7xl px-6 py-10 md:py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div>
+        <p class="font-semibold">GreenEdge Robotics</p>
+        <p class="text-sm text-white/60"><span data-en>Autonomous mowing for premium properties in Mexico.</span><span data-es>Corte autónomo para propiedades premium en México.</span></p>
+      </div>
+      <div class="text-sm text-white/60">
+        © <span id="year"></span> GreenEdge Robotics. <span data-en>All rights reserved.</span><span data-es>Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile CTA -->
+  <div class="md:hidden fixed inset-x-0 bottom-0 z-40 bg-brand-800/80 backdrop-blur border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-center gap-3">
+      <a data-en class="flex-1 rounded bg-emerald-500 px-4 py-2 text-center font-semibold text-black" href="https://wa.me/523221702113?text=Hi%20GreenEdge%2C%20I%27d%20like%20to%20discuss%20autonomous%20mowing%20for%20my%20golf%20course%2Fresort.">WhatsApp</a>
+      <a data-es class="flex-1 rounded bg-emerald-500 px-4 py-2 text-center font-semibold text-black" href="https://wa.me/523221702113?text=Hola%20GreenEdge%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mantenimiento%20aut%C3%B3nomo%20para%20mi%20campo%20de%20golf%2Fresort.">WhatsApp</a>
+      <a data-en class="flex-1 rounded bg-white/10 px-4 py-2 text-center" href="mailto:info@greenedgerobotics.mx">Email</a>
+      <a data-es class="flex-1 rounded bg-white/10 px-4 py-2 text-center" href="mailto:info@greenedgerobotics.mx">Correo</a>
+    </div>
+  </div>
+
+  <!-- JS: menu, fade, year, bilingual -->
+  <script>
+    // Mobile menu
+    const btn = document.getElementById('menuBtn');
+    const mnav = document.getElementById('mnav');
+    if (btn) btn.addEventListener('click', () => {
+      const open = mnav.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Fade-in
+    const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target);} });
+    }, { threshold: 0.1 }) : null;
+    document.querySelectorAll('.fade').forEach(el => io && io.observe(el));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Bilingual
+    const pageTitle = document.getElementById('pageTitle');
+    const pageDesc  = document.getElementById('pageDesc');
+    const langToggle  = document.getElementById('langToggle');
+    const langToggleM = document.getElementById('langToggleM');
+
+    const STR = {
+      en: {
+        title: 'GreenEdge Robotics — Autonomous Mowing for Golf & Luxury Resorts',
+        desc:  'Premium autonomous robotic mowers for golf courses, luxury resorts, and large estates in Mexico. Lower OPEX, quiet operation, fleet-ready reliability, and zero on-site supervision.',
+        btn: 'ES'
+      },
+      es: {
+        title: 'GreenEdge Robotics — Corte Autónomo para Campos de Golf y Resorts',
+        desc:  'Robots cortacésped autónomos premium para campos de golf, resorts y grandes propiedades en México. Menor OPEX, operación silenciosa, confiables y listos para flotas.',
+        btn: 'EN'
+      }
+    };
+
+    function setLang(code){
+      const html = document.documentElement;
+      html.lang = code;
+      html.classList.remove('lang-en','lang-es');
+      html.classList.add('lang-' + code);
+      pageTitle.textContent = STR[code].title;
+      pageDesc.setAttribute('content', STR[code].desc);
+      if (langToggle)  langToggle.textContent  = STR[code].btn;
+      if (langToggleM) langToggleM.textContent = STR[code].btn;
+      localStorage.setItem('greenedge:lang', code);
+    }
+
+    const saved = localStorage.getItem('greenedge:lang') || 'en';
+    setLang(saved);
+
+    function toggleLang(){
+      setLang(document.documentElement.classList.contains('lang-en') ? 'es' : 'en');
+    }
+    if (langToggle)  langToggle.addEventListener('click', toggleLang);
+    if (langToggleM) langToggleM.addEventListener('click', toggleLang);
+  </script>
+</body>
+</html>
