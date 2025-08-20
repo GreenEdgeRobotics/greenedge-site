@@ -1,376 +1,225 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GreenEdge Robotics — Autonomous mowing for golf courses & resorts</title>
-  <meta name="description" content="Premium autonomous mowing for golf courses and luxury resorts in Mexico. Quiet (60–67 dB), RTK-GPS precision, service with repairs & liability insurance included." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231D7A57'/%3E%3Cpath d='M18 38c8-10 20-10 28 0' stroke='%23fff' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='38' r='3.5' fill='%23fff'/%3E%3Ccircle cx='42' cy='38' r='3.5' fill='%23fff'/%3E%3C/svg%3E" />
-  <meta name="theme-color" content="#0f6d4e" />
+  <title>GreenEdge Robotics — Premium autonomous mowing for golf & resorts (Mexico)</title>
+  <meta name="description" content="Premium autonomous mowing for golf courses and luxury resorts across Mexico. Quiet (60–67 dB), RTK-GPS precision, insured service. Immediate pilots available; ready to purchase and scale." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230E1A14'/%3E%3Cpath d='M18 38c8-10 20-10 28 0' stroke='%23C9A227' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='38' r='3.5' fill='%23C9A227'/%3E%3Ccircle cx='42' cy='38' r='3.5' fill='%23C9A227'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#0E1A14" />
+  <meta property="og:title" content="GreenEdge Robotics — Premium autonomous mowing for golf & resorts" />
+  <meta property="og:description" content="Nationwide in Mexico. Insured. Immediate activation. Supplier partners welcomed (export + RMA path confirmed)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/hero-resort.webp" />
+  <link rel="preload" as="image" href="img/hero-resort.webp" />
 
   <style>
+    /* ===== Classy palette ===== */
     :root{
-      --bg: #F6FBF8;
-      --panel: #ffffff;
-      --ink: #0B2E1F;
-      --muted: #56706A;
-      --brand: #0F6D4E;
-      --brand-2: #179D72;
-      --accent: #12B886;
-      --line: #E4EFEA;
-      --shadow: 0 6px 30px rgba(0,0,0,.06);
-      --radius: 16px;
+      --deep:#0E1A14;     /* base background */
+      --forest:#14221A;   /* panels */
+      --ivory:#F7F5EF;    /* text on dark */
+      --gold:#C9A227;     /* CTA */
+      --charcoal:#2A2E2A; /* secondary text */
+      --line: rgba(255,255,255,.12);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.22);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink); background:var(--bg);
+      margin:0; background:var(--deep); color:var(--ivory);
+      font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans";
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
+    a{color:inherit; text-decoration:none}
     .wrap{max-width:1200px; margin:0 auto; padding:0 20px}
-    header{
-      position:sticky; top:0; z-index:50; background:rgba(246,251,248,.85); backdrop-filter:saturate(140%) blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px;
-    }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
-    .brand-badge{width:32px; height:32px; border-radius:50%; background:var(--brand); display:grid; place-items:center; color:#fff; font-size:12px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:blur(8px); background:rgba(14,26,20,.78); border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800}
+    .badge{width:34px; height:34px; border-radius:12px; background:var(--gold); color:var(--deep); display:grid; place-items:center}
     nav ul{display:flex; gap:18px; list-style:none; padding:0; margin:0}
-    nav a{color:var(--ink); font-weight:600}
+    nav a{opacity:.9}
     .actions{display:flex; gap:10px; align-items:center}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1px solid var(--line);
-      padding:10px 14px; border-radius:12px; background:#fff; color:var(--ink); box-shadow:var(--shadow);
-      font-weight:700; transition:.2s ease;
-    }
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:14px; border:1px solid var(--line); background:rgba(255,255,255,.06)}
+    .btn.primary{background:var(--gold); color:var(--deep); border-color:transparent; box-shadow:var(--shadow)}
     .btn:hover{transform:translateY(-1px)}
-    .btn.brand{background:var(--brand); color:#fff; border-color:transparent}
-    .btn.call{background:#fff}
-    .btn.ghost{background:transparent; border-color:var(--line); box-shadow:none}
 
     /* Hero */
-    .hero{
-      padding:40px 0 10px;
-      background:radial-gradient(1200px 480px at 50% -10%, #EAF6F1, transparent 60%);
-    }
-    .hero-grid{
-      display:grid; grid-template-columns: 1.1fr .9fr; gap:24px; align-items:center;
-    }
-    .eyebrow{font-weight:800; color:var(--brand); letter-spacing:.03em; text-transform:uppercase; font-size:12px}
-    h1{font-size:40px; line-height:1.15; margin:8px 0 12px}
-    .lead{color:var(--muted); max-width:52ch}
-    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
-    .hero-img{
-      border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); background:#dfeee7; min-height:320px;
-    }
-    .hero-img img{width:100%; height:100%; object-fit:cover; display:block}
-
-    /* Gallery */
-    .gallery{margin:26px 0 6px}
-    .gallery-grid{
-      display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
-    }
-    .tile{border-radius:14px; overflow:hidden; background:#eef6f1; box-shadow:var(--shadow)}
-    .tile img{width:100%; height:180px; object-fit:cover; display:block}
+    .hero{position:relative; min-height:74vh; display:grid; place-items:center; isolation:isolate}
+    .hero img.bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2}
+    .hero::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,26,20,.75), rgba(14,26,20,.35) 45%, rgba(14,26,20,.9)); z-index:-1}
+    .hero .content{text-align:center; padding:72px 0}
+    .eyebrow{letter-spacing:.14em; text-transform:uppercase; font-size:12px; opacity:.8}
+    h1{font-size:clamp(34px,4.8vw,60px); line-height:1.1; margin:.5rem 0}
+    .lead{opacity:.9; max-width:60ch; margin:0 auto}
+    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:18px}
 
     /* Trust bar */
-    .trust{margin:26px 0}
-    .trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
-    .pill{
-      display:flex; align-items:center; gap:10px; background:var(--panel); border:1px solid var(--line);
-      border-radius:999px; padding:12px 14px; box-shadow:var(--shadow); font-weight:700; color:#0b3a2a
-    }
-    .pill svg{color:var(--brand)}
+    .trust{background:var(--forest); border-block:1px solid var(--line)}
+    .trust .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; padding:18px 0}
+    .pill{display:flex; justify-content:center; align-items:center; gap:10px; background:rgba(255,255,255,.06); border:1px solid var(--line); border-radius:999px; padding:12px 14px; font-weight:700}
+    @media (max-width:820px){.trust .grid{grid-template-columns:repeat(2,1fr)}}
 
-    /* Cards / sections */
-    section{padding:36px 0}
-    .section-title{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:14px}
-    .cards{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
-    .card{
-      background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)
-    }
-    .card h3{margin:0 0 6px; font-size:18px}
-    .card p{color:var(--muted); margin:0}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .specs{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
-    .spec{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px; text-align:center; box-shadow:var(--shadow)}
-    .spec b{display:block; font-size:18px}
+    /* Supplier pitch */
+    .supplier{padding:56px 0}
+    .section-title{font-size:28px; margin:0 0 18px}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .card{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:4px 0 8px; font-size:18px}
+    .muted{color:#d6d9d2}
+    .pdf-card{display:flex; gap:16px; align-items:center; padding:16px; border:1px solid var(--line); border-radius:16px; background:rgba(0,0,0,.18)}
 
-    .quote-band{
-      background:linear-gradient(90deg, #E8F4EF, #F4FBF8);
-      border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-      padding:22px 0; margin:30px 0
-    }
-    .quote-list{display:flex; gap:22px; overflow:auto; scrollbar-width:none}
-    .quote{white-space:nowrap; font-weight:800; color:#0c4733}
+    /* Gallery */
+    .gallery{padding:56px 0; background:var(--forest)}
+    .grid-img{display:grid; gap:12px; grid-template-columns:repeat(3,1fr)}
+    .grid-img figure{margin:0; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line)}
+    .grid-img figcaption{padding:10px 12px; font-size:14px; background:rgba(0,0,0,.22)}
+    .grid-img img{height:220px; width:100%; object-fit:cover}
+    @media (max-width:980px){.cards{grid-template-columns:1fr}; .grid-img{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.grid-img{grid-template-columns:1fr}}
 
-    .process{counter-reset:step}
-    .step{display:flex; gap:16px; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px; box-shadow:var(--shadow)}
-    .step-num{
-      width:36px; height:36px; border-radius:50%; background:var(--brand); color:#fff; display:grid; place-items:center; font-weight:800
-    }
+    /* Process */
+    .process{padding:56px 0}
+    .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+    .step{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:16px; padding:18px}
+    .n{display:inline-grid; place-items:center; width:34px; height:34px; border-radius:10px; background:var(--gold); color:var(--deep); font-weight:800; margin-bottom:8px}
+    @media (max-width:980px){.steps{grid-template-columns:1fr 1fr}}
 
-    .case-box{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+    /* Footer */
+    footer{padding:32px 0; border-top:1px solid var(--line)}
+    .foot-grid{display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center}
+    @media (max-width:720px){.foot-grid{grid-template-columns:1fr}}
 
-    .faq details{
-      background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; box-shadow:var(--shadow)
-    }
-    .faq summary{font-weight:800; cursor:pointer}
-    .faq p{margin:6px 0 0; color:var(--muted)}
-
-    .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-    .field{display:flex; flex-direction:column; gap:6px}
-    input, textarea{
-      border:1px solid var(--line); border-radius:10px; padding:12px; background:#fff; font:inherit
-    }
-    textarea{min-height:120px; resize:vertical}
-
-    footer{
-      margin-top:30px; padding:24px 0; background:#fff; border-top:1px solid var(--line)
-    }
-    .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:16px}
-    .muted{color:var(--muted)}
-
-    /* sticky mobile contact bar */
-    .sticky-bar{
-      position:fixed; bottom:10px; left:50%; transform:translateX(-50%);
-      background:#fff; border:1px solid var(--line); border-radius:999px; box-shadow:var(--shadow);
-      display:flex; gap:8px; padding:8px; z-index:60
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
-      .cards{grid-template-columns:1fr 1fr}
-      .grid-3{grid-template-columns:1fr}
-      .specs{grid-template-columns:1fr 1fr}
-      .trust-grid{grid-template-columns:1fr 1fr}
-      .gallery-grid{grid-template-columns:1fr 1fr 1fr}
-      .contact-grid{grid-template-columns:1fr}
-      .foot-grid{grid-template-columns:1fr}
-      nav ul{display:none}
-      .actions .hide-sm{display:none}
-    }
+    /* Sticky mobile */
+    .sticky{position:fixed; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:8px; padding:8px; background:rgba(255,255,255,.08); border:1px solid var(--line); border-radius:999px; backdrop-filter:blur(8px); z-index:60}
   </style>
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <div class="brand">
-      <span class="brand-badge">GE</span> <span id="t_brand">GreenEdge Robotics · Mexico</span>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><div class="badge">GE</div><div id="t_brand">GreenEdge Robotics · Mexico</div></div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#solutions" id="t_nav_solutions">Solutions</a></li>
+          <li><a href="#benefits" id="t_nav_benefits">Benefits</a></li>
+          <li><a href="#supplier" id="t_nav_supplier">Suppliers</a></li>
+          <li><a href="#process" id="t_nav_process">Process</a></li>
+          <li><a href="#contact" id="t_nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <a id="btn-call-top" class="btn" href="tel:+523221702113">📞 <span id="t_call">Call</span></a>
+        <a id="btn-wa-top" class="btn primary" target="_blank" rel="noopener" href="https://wa.me/523221702113">WhatsApp</a>
+        <a class="btn" href="GreenEdge_Robotics_Overview.pdf">Download PDF</a>
+        <button class="btn" id="langToggle" aria-label="Toggle language">ES</button>
+      </div>
     </div>
-    <nav aria-label="Primary">
-      <ul>
-        <li><a href="#solutions" id="t_nav_solutions">Solutions</a></li>
-        <li><a href="#benefits" id="t_nav_benefits">Benefits</a></li>
-        <li><a href="#process" id="t_nav_process">Process</a></li>
-        <li><a href="#case" id="t_nav_case">Case Study</a></li>
-        <li><a href="#faq" id="t_nav_faq">FAQ</a></li>
-        <li><a href="#contact" id="t_nav_contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="actions">
-      <a id="btn-call-top" class="btn call" href="tel:+525500000000" aria-label="Call">📞 <span id="t_call">Call</span></a>
-      <a id="btn-wa-top" class="btn brand hide-sm" target="_blank" rel="noopener" href="https://wa.me/525500000000">
-        <span>WhatsApp</span>
-      </a>
-      <a id="btn-mail-top" class="btn ghost hide-sm" href="mailto:sales@greenedgerobotics.com">Email</a>
-      <button class="btn" id="langToggle" aria-label="Toggle language">ES</button>
-    </div>
-  </div>
-</header>
+  </header>
 
-<main>
   <!-- Hero -->
-  <section class="hero">
-    <div class="wrap hero-grid">
+  <section class="hero" role="banner">
+    <img class="bg" src="gallery-greenside.webp" alt="Autonomous mower on a luxury resort lawn at sunset" />
+    <div class="wrap content">
+      <div class="eyebrow" id="t_eyebrow">Premium service · Mexico</div>
+      <h1 id="t_h1">Autonomous mowing for <span style="color:var(--gold)">golf courses</span> & <span style="color:var(--gold)">luxury resorts</span></h1>
+      <p class="lead" id="t_lead">Quiet (60–67 dB), RTK-GPS precision, and insured service. We deploy anywhere in Mexico—fast.</p>
+      <div class="cta">
+        <a id="btn-wa-hero" class="btn primary" target="_blank" rel="noopener" href="https://wa.me/523221702113">💬 <span id="t_btn_wa">Talk to Sales on WhatsApp</span></a>
+        <a id="btn-call-hero" class="btn" href="tel:+523221702113">📞 <span id="t_btn_call">Call</span></a>
+        <a class="btn" href="GreenEdge_Robotics_Overview.pdf" id="t_btn_pdf">Download PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="trust" aria-label="Key assurances">
+    <div class="wrap grid">
+      <div class="pill">Nationwide in Mexico</div>
+      <div class="pill">On-site Setup & Training</div>
+      <div class="pill">Insured Service</div>
+      <div class="pill">Immediate Activation</div>
+    </div>
+  </section>
+
+  <!-- Supplier pitch -->
+  <section class="supplier wrap" id="supplier">
+    <p class="eyebrow" id="t_sup_eyebrow">Supplier Partners</p>
+    <h2 class="section-title" id="t_sup_title">We’re ready to buy and scale — let’s partner</h2>
+    <div class="cards" role="list">
+      <article class="card" role="listitem">
+        <h3 id="t_sup_c1h">Immediate PO</h3>
+        <p id="t_sup_c1p">Purchase order for <strong>2–6 RTK units + starter parts kit</strong> this week. We can <strong>prepay</strong> and ship to our border forwarder (Laredo, TX / San Diego, CA) or pick up.</p>
+      </article>
+      <article class="card" role="listitem">
+        <h3 id="t_sup_c2h">Export & Warranty</h3>
+        <p id="t_sup_c2p">We’ll buy for <strong>export to Mexico</strong>. If warranty is U.S.-only, we’ll <strong>RMA via your shop</strong>; we handle freight and paperwork.</p>
+      </article>
+      <article class="card" role="listitem">
+        <h3 id="t_sup_c3h">Pipeline → Scale</h3>
+        <p id="t_sup_c3p">Pilots committed: <strong>1 resort + multiple golf courses</strong>. Post-validation, ramp to <strong>15+ sites (80–120 units / 12 months)</strong>.</p>
+      </article>
+    </div>
+    <div style="height:1px; background:linear-gradient(90deg, transparent, var(--line), transparent); margin:22px 0"></div>
+    <div class="pdf-card">
+      <img src="img/gallery-beforeafter.webp" alt="Cut quality comparison" style="width:92px; height:110px; border-radius:10px; object-fit:cover">
       <div>
-        <div class="eyebrow" id="t_eyebrow">Premium service · Mexico</div>
-        <h1 id="t_h1">Autonomous mowing for <span style="color:var(--brand)">golf courses</span> & <span style="color:var(--brand)">luxury resorts</span></h1>
-        <p class="lead" id="t_lead">Lower OPEX, quiet (60–67 dB), RTK-GPS precision. Fleet-ready service across Mexico.</p>
-        <div class="cta">
-          <a id="btn-wa-hero" class="btn brand" target="_blank" rel="noopener" href="https://wa.me/525500000000">💬 <span id="t_btn_wa">Talk to Sales on WhatsApp</span></a>
-          <a class="btn" href="#contact" id="t_btn_quote">Get a quote</a>
-          <a id="btn-call-hero" class="btn call" href="tel:+525500000000">📞 <span id="t_btn_call">Call</span></a>
-        </div>
+        <div style="font-weight:800">Download our one-pager</div>
+        <div style="opacity:.8; font-size:14px">English & Spanish • Specs • Process • SLAs</div>
       </div>
-      <div class="hero-img" aria-label="Autonomous mower on a fairway">
-        <img src="/img/hero-fairway.webp" alt="Autonomous mower cutting a golf fairway" />
-      </div>
-    </div>
-
-    <div class="wrap gallery">
-      <div class="gallery-grid">
-        <a class="tile" href="#solutions" aria-label="Fairway pass">
-          <img src="/img/gallery-fairway-pass.webp" alt="Clean fairway pass with parallel lines" loading="lazy" />
-        </a>
-        <a class="tile" href="#solutions" aria-label="Greenside detail">
-          <img src="/img/gallery-greenside.webp" alt="Greenside trimming with precise edges" loading="lazy" />
-        </a>
-        <a class="tile" href="#solutions" aria-label="Fleet & charging">
-          <img src="/img/gallery-fleet.webp" alt="Fleet at charging area ready for deployment" loading="lazy" />
-        </a>
-      </div>
-    </div>
-
-    <div class="wrap trust">
-      <div class="trust-grid">
-        <div class="pill">✅ <span id="t_premium">Premium quality & service</span></div>
-        <div class="pill">🛡️ <span id="t_insurance">Repairs & liability insurance included</span></div>
-        <div class="pill">✈️ <span id="t_travel">Pro team travels nationwide</span></div>
-        <div class="pill">⚡ <span id="t_fast">Fast results once approved</span></div>
+      <div style="margin-left:auto">
+        <a class="btn primary" href="GreenEdge_Robotics_Overview.pdf">Download PDF</a>
       </div>
     </div>
   </section>
 
-  <!-- Benefits -->
-  <section id="benefits">
+  <!-- Gallery -->
+  <section class="gallery" aria-label="Work gallery">
     <div class="wrap">
-      <div class="section-title">
-        <h2 id="t_benefits">Benefits</h2>
-      </div>
-      <div class="cards">
-        <div class="card">
-          <h3 id="t_b1h">Fleet-ready</h3>
-          <p id="t_b1p">Plan multi-hectare coverage with synced routes and uptime monitoring.</p>
-        </div>
-        <div class="card">
-          <h3 id="t_b2h">RTK-GPS ready</h3>
-          <p id="t_b2p">Straight lines and consistent cut height (10–150 mm) every pass.</p>
-        </div>
-        <div class="card">
-          <h3 id="t_b3h">Weather-resistant</h3>
-          <p id="t_b3p">Designed for real-world conditions (IPX5–IPX6 ingress protection).</p>
-        </div>
-        <div class="card">
-          <h3 id="t_b4h">Quiet 60–67 dB</h3>
-          <p id="t_b4p">Low noise for premium experiences at golf courses and resorts.</p>
-        </div>
-      </div>
-
-      <div class="specs" style="margin-top:14px">
-        <div class="spec"><b>500–1200 mm</b><span id="t_s1">Cutting width</span></div>
-        <div class="spec"><b>10–150 mm</b><span id="t_s2">Height adjust</span></div>
-        <div class="spec"><b>Multi-hectare</b><span id="t_s3">Daily area (fleets)</span></div>
-        <div class="spec"><b>IPX5–IPX6</b><span id="t_s4">Ingress protection</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Solutions -->
-  <section id="solutions">
-    <div class="wrap">
-      <div class="section-title">
-        <h2 id="t_solutions">Solutions</h2>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <h3 id="t_sol1h">Golf courses</h3>
-          <p id="t_sol1p">Fairways, approaches, rough. Consistency guests notice, savings you keep.</p>
-        </div>
-        <div class="card">
-          <h3 id="t_sol2h">Resorts</h3>
-          <p id="t_sol2p">Event lawns, promenades, perimeter areas—quiet maintenance around guests.</p>
-        </div>
-        <div class="card">
-          <h3 id="t_sol3h">Multi-site operations</h3>
-          <p id="t_sol3p">Fleet coordination, reporting, and centralized standards across properties.</p>
-        </div>
+      <p class="eyebrow" id="t_gallery_kicker">In the field</p>
+      <h2 class="section-title" id="t_gallery_title">Quiet, consistent, premium finish</h2>
+      <div class="grid-img">
+        <figure>
+          <img src="gallery-greenside.webp" alt="Mower operating near the green with golfers in the background" loading="lazy" />
+          <figcaption>Unobtrusive around players</figcaption>
+        </figure>
+        <figure>
+          <img src="hero-fairway.webp" alt="Fairway finish at sunrise" loading="lazy" />
+          <figcaption>Fairway finish at sunrise</figcaption>
+        </figure>
+        <figure>
+          <img src="gallery-setup.webp" alt="Team unloading mower from van" loading="lazy" />
+          <figcaption>Professional setup & transport</figcaption>
+        </figure>
+        <figure>
+          <img src="hero-resort.webp" alt="Autonomous mower at a luxury resort lawn" loading="lazy" />
+          <figcaption>Resort-grade look</figcaption>
+        </figure>
+        <figure>
+          <img src="gallery-maintenance.webp" alt="Technician performing maintenance next to charging dock" loading="lazy" />
+          <figcaption>Certified maintenance & safety</figcaption>
+        </figure>
+        <figure>
+          <img src="gallery-beforeafter.webp" alt="Before and after cut comparison" loading="lazy" />
+          <figcaption>Before → After (precision cut)</figcaption>
+        </figure>
       </div>
     </div>
   </section>
-
-  <!-- Quote band -->
-  <div class="quote-band">
-    <div class="wrap quote-list" aria-label="Memorable lines">
-      <div class="quote" id="t_q1">“Let the fairway whisper, not the mower.”</div>
-      <div class="quote" id="t_q2">“Straight lines. Straight savings.”</div>
-      <div class="quote" id="t_q3">“Quiet by design, bold in results.”</div>
-    </div>
-  </div>
 
   <!-- Process -->
-  <section id="process">
+  <section class="process">
     <div class="wrap">
-      <div class="section-title"><h2 id="t_process">Process</h2></div>
-      <div class="grid-3 process">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div>
-            <h3 id="t_p1h">Evaluation (15–30 min)</h3>
-            <p id="t_p1p">Site walk & ROI: area, obstacles, charging, and savings model.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div>
-            <h3 id="t_p2h">Plan</h3>
-            <p id="t_p2p">Routes, cadence, service scope—repairs & liability insurance included.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div>
-            <h3 id="t_p3h">Start fast</h3>
-            <p id="t_p3p">Once approved, we mobilize immediately so you see results quickly and professionally.</p>
-          </div>
-        </div>
-      </div>
-      <div class="step" style="margin-top:12px">
-        <div class="step-num">4</div>
-        <div>
-          <h3 id="t_p4h">Ongoing</h3>
-          <p id="t_p4p">Monitoring, optimization, training, and support.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Study -->
-  <section id="case">
-    <div class="wrap">
-      <div class="section-title">
-        <h2 id="t_case">Case Study</h2>
-        <a class="btn" href="GreenEdge_Robotics_Overview.pdf" download id="t_btn_pdf">Request the PDF</a>
-      </div>
-      <div class="case-box">
-        <p id="t_case_p">
-          Resort fairways improved guest ratings and reduced grounds OPEX by 28% after adopting autonomous mowing with RTK-GPS routes and quiet operation.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="faq">
-    <div class="wrap">
-      <div class="section-title"><h2 id="t_faq">FAQ</h2></div>
-      <div class="grid-3">
-        <details>
-          <summary id="t_faq1q">What’s included?</summary>
-          <p id="t_faq1a">Service, setup, optimization, and <b>repairs & liability insurance</b> in our packages.</p>
-        </details>
-        <details>
-          <summary id="t_faq2q">How quiet is it?</summary>
-          <p id="t_faq2a">Typical operation is 60–67 dB—quiet enough for premium guest areas.</p>
-        </details>
-        <details>
-          <summary id="t_faq3q">Weather limits?</summary>
-          <p id="t_faq3a">Hardware is IPX5–IPX6. We plan routes around heavy weather for performance and safety.</p>
-        </details>
-        <details>
-          <summary id="t_faq4q">How fast do you start?</summary>
-          <p id="t_faq4a">After approval, we mobilize immediately so you see results quickly and professionally.</p>
-        </details>
-        <details>
-          <summary id="t_faq5q">Coverage in Mexico?</summary>
-          <p id="t_faq5a">Yes—our team can fly to any golf course or resort in Mexico.</p>
-        </details>
+      <p class="eyebrow" id="t_process">How we work</p>
+      <h2 class="section-title">Close fast, deploy faster</h2>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3 id="t_p1h">Evaluation (15–30 min)</h3><p id="t_p1p">Site walk & ROI: area, obstacles, charging, and savings model.</p></div>
+        <div class="step"><div class="n">2</div><h3 id="t_p2h">Plan</h3><p id="t_p2p">Routes, cadence, service scope—repairs & liability insurance included.</p></div>
+        <div class="step"><div class="n">3</div><h3 id="t_p3h">Activation</h3><p id="t_p3p">We mobilize immediately so you see professional results fast.</p></div>
+        <div class="step"><div class="n">4</div><h3 id="t_p4h">Ongoing</h3><p id="t_p4p">Optimization, training, maintenance, and incident log.</p></div>
       </div>
     </div>
   </section>
@@ -378,303 +227,188 @@
   <!-- Contact -->
   <section id="contact">
     <div class="wrap">
-      <div class="section-title">
-        <h2 id="t_contact">Contact</h2>
-      </div>
-      <div class="contact-grid">
+      <h2 class="section-title" id="t_contact">Contact</h2>
+      <div class="cards" style="grid-template-columns:1fr 1fr; gap:16px">
         <div class="card">
           <p><b id="t_contact_p1">Need an evaluation? We’ll size the fleet, routes and ROI.</b></p>
           <p class="muted" id="t_contact_p2">Team can travel nationwide (golf courses & resorts).</p>
           <div class="cta">
-            <a id="btn-wa-contact" class="btn brand" target="_blank" rel="noopener" href="https://wa.me/525500000000">💬 <span id="t_btn_wa2">WhatsApp Sales</span></a>
-            <a id="btn-call-contact" class="btn call" href="tel:+525500000000">📞 <span id="t_call2">Call</span></a>
-            <a class="btn" href="mailto:sales@greenedgerobotics.com">✉️ <span id="t_email2">Email us</span></a>
+            <a id="btn-wa-contact" class="btn primary" target="_blank" rel="noopener" href="https://wa.me/523221702113">💬 <span id="t_btn_wa2">WhatsApp Sales</span></a>
+            <a id="btn-call-contact" class="btn" href="tel:+523221702113">📞 <span id="t_call2">Call</span></a>
+            <a class="btn" href="mailto:mateostonem@icloud.com">✉️ <span id="t_email2">Email</span></a>
           </div>
         </div>
         <form class="card" onsubmit="event.preventDefault(); alert(currentLang==='en' ? 'Thanks — we will reach out shortly.' : 'Gracias — nos pondremos en contacto pronto.');">
-          <div class="field">
+          <div class="field" style="display:flex; flex-direction:column; gap:6px">
             <label for="name" id="t_f_name">Full name</label>
-            <input id="name" required />
+            <input id="name" required style="border-radius:10px; padding:12px; border:1px solid var(--line); background:rgba(255,255,255,.06); color:var(--ivory)"/>
           </div>
-          <div class="field">
+          <div class="field" style="display:flex; flex-direction:column; gap:6px">
             <label for="email" id="t_f_email">Email</label>
-            <input id="email" type="email" required />
+            <input id="email" type="email" required style="border-radius:10px; padding:12px; border:1px solid var(--line); background:rgba(255,255,255,.06); color:var(--ivory)"/>
           </div>
-          <div class="field">
+          <div class="field" style="display:flex; flex-direction:column; gap:6px">
             <label for="msg" id="t_f_msg">What property(ies) and area?</label>
-            <textarea id="msg" required></textarea>
+            <textarea id="msg" required style="min-height:120px; border-radius:10px; padding:12px; border:1px solid var(--line); background:rgba(255,255,255,.06); color:var(--ivory)"></textarea>
           </div>
-          <button class="btn brand" type="submit" id="t_f_send">Send</button>
+          <button class="btn primary" type="submit" id="t_f_send">Send</button>
         </form>
       </div>
     </div>
   </section>
-</main>
 
-<footer>
-  <div class="wrap foot-grid">
-    <div>
-      <b id="t_foot_title">Premium quality & service</b>
-      <p class="muted" id="t_foot_copy">Repairs & liability insurance included. Professional, nationwide coverage across Mexico.</p>
+  <!-- Footer -->
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <div style="font-weight:800" id="t_foot_title">Premium quality & service</div>
+        <div style="opacity:.85" id="t_foot_copy">Repairs & liability insurance included. Professional, nationwide coverage across Mexico.</div>
+      </div>
+      <div class="actions" style="justify-content:flex-end">
+        <a class="btn" href="mailto:mateostonem@icloud.com">✉️ Email</a>
+        <a class="btn" href="tel:+523221702113">📞 Call</a>
+        <a class="btn primary" href="GreenEdge_Robotics_Overview.pdf">Download PDF</a>
+      </div>
     </div>
-    <div>
-      <b id="t_foot_company">GreenEdge Robotics</b>
-      <p class="muted">sales@greenedgerobotics.com<br/>+52 55 0000 0000</p>
-    </div>
-    <div>
-      <b id="t_lang">Language</b><br/>
-      <button class="btn" id="langToggleFoot" aria-label="Toggle language">ES</button>
-    </div>
+  </footer>
+
+  <!-- Sticky quick contact -->
+  <div class="sticky" aria-label="Quick contact">
+    <a id="btn-wa-sticky" class="btn primary" target="_blank" rel="noopener" href="https://wa.me/523221702113">💬 WhatsApp</a>
+    <a id="btn-call-sticky" class="btn" href="tel:+523221702113">📞 Call</a>
   </div>
-</footer>
 
-<!-- Mobile sticky contact bar -->
-<div class="sticky-bar" aria-label="Quick contact">
-  <a id="btn-wa-sticky" class="btn brand" target="_blank" rel="noopener" href="https://wa.me/525500000000">💬 <span id="t_btn_wa3">WhatsApp</span></a>
-  <a id="btn-call-sticky" class="btn call" href="tel:+525500000000">📞 <span id="t_call3">Call</span></a>
-  <a class="btn" href="mailto:info@greenedgerobotics.com">✉️</a>
-</div>
+  <!-- i18n + wiring -->
+  <script>
+  const PHONE_E164 = "+523221702113";
+  const WA_LINK = "https://wa.me/" + PHONE_E164.replace(/\\D/g,"");
 
-<script>
-/* === Replace with your real number once === */
-const PHONE_E164 = "+52 3221702113"; // e.g., +525512345678
-const WA_LINK = "https://wa.me/" + PHONE_E164.replace(/\D/g,"");
+  // ensure links are correct everywhere
+  ["btn-call-top","btn-call-hero","btn-call-contact","btn-call-sticky"].forEach(id=>{
+    const a=document.getElementById(id); if(a) a.href="tel:"+PHONE_E164;
+  });
+  ["btn-wa-top","btn-wa-hero","btn-wa-contact","btn-wa-sticky"].forEach(id=>{
+    const a=document.getElementById(id); if(a) a.href=WA_LINK;
+  });
 
-/* Wire up tel/wa buttons everywhere */
-["btn-call-top","btn-call-hero","btn-call-contact","btn-call-sticky"].forEach(id=>{
-  const a=document.getElementById(id); if(a) a.href="tel:"+PHONE_E164;
-});
-["btn-wa-top","btn-wa-hero","btn-wa-contact","btn-wa-sticky"].forEach(id=>{
-  const a=document.getElementById(id); if(a) a.href=WA_LINK;
-});
+  // Strings
+  const STR = {
+    en: {
+      brand:"GreenEdge Robotics · Mexico",
+      nav:{solutions:"Solutions", benefits:"Benefits", supplier:"Suppliers", process:"Process", contact:"Contact"},
+      eyebrow:"Premium service · Mexico",
+      h1:"Autonomous mowing for <span style='color:var(--gold)'>golf courses</span> & <span style='color:var(--gold)'>luxury resorts</span>",
+      lead:"Quiet (60–67 dB), RTK-GPS precision, and insured service. We deploy anywhere in Mexico—fast.",
+      btn_wa:"Talk to Sales on WhatsApp", btn_call:"Call", btn_pdf:"Download PDF",
+      // Supplier
+      sup_eyebrow:"Supplier Partners",
+      sup_title:"We’re ready to buy and scale — let’s partner",
+      sup_c1h:"Immediate PO",
+      sup_c1p:"Purchase order for <strong>2–6 RTK units + starter parts kit</strong> this week. We can <strong>prepay</strong> and ship to our border forwarder (Laredo, TX / San Diego, CA) or pick up.",
+      sup_c2h:"Export & Warranty",
+      sup_c2p:"We’ll buy for <strong>export to Mexico</strong>. If warranty is U.S.-only, we’ll <strong>RMA via your shop</strong>; we handle freight and paperwork.",
+      sup_c3h:"Pipeline → Scale",
+      sup_c3p:"Pilots committed: <strong>1 resort + multiple golf courses</strong>. Post-validation, ramp to <strong>15+ sites</strong> (80–120 units / 12 months).",
+      // Contact/Forms
+      contact:"Contact",
+      contact_p1:"Need an evaluation? We’ll size the fleet, routes and ROI.",
+      contact_p2:"Team can travel nationwide (golf courses & resorts).",
+      wa2:"WhatsApp Sales", call:"Call", email2:"Email",
+      f_name:"Full name", f_email:"Email", f_msg:"What property(ies) and area?", f_send:"Send",
+      foot_title:"Premium quality & service",
+      foot_copy:"Repairs & liability insurance included. Professional, nationwide coverage across Mexico."
+    },
+    es: {
+      brand:"GreenEdge Robotics · México",
+      nav:{solutions:"Soluciones", benefits:"Beneficios", supplier:"Proveedores", process:"Proceso", contact:"Contacto"},
+      eyebrow:"Servicio premium · México",
+      h1:"Corte autónomo para <span style='color:var(--gold)'>campos de golf</span> y <span style='color:var(--gold)'>resorts de lujo</span>",
+      lead:"Silencioso (60–67 dB), precisión RTK-GPS y servicio con seguro. Despliegue a nivel nacional—rápido.",
+      btn_wa:"Habla con Ventas en WhatsApp", btn_call:"Llamar", btn_pdf:"Descargar PDF",
+      sup_eyebrow:"Socios Proveedores",
+      sup_title:"Listos para comprar y escalar — hagamos alianza",
+      sup_c1h:"Orden inmediata",
+      sup_c1p:"Orden de compra por <strong>2–6 unidades RTK + kit de refacciones</strong> esta semana. Podemos <strong>prepagar</strong> y enviar a nuestro forwarder en frontera (Laredo, TX / San Diego, CA) o recoger.",
+      sup_c2h:"Exportación y Garantía",
+      sup_c2p:"Compramos para <strong>exportación a México</strong>. Si la garantía es solo EE. UU., haremos <strong>RMA vía su taller</strong>; nosotros cubrimos flete y papeleo.",
+      sup_c3h:"Pipeline → Escala",
+      sup_c3p:"Pilotos comprometidos: <strong>1 resort + varios campos</strong>. Tras validación, expansión a <strong>15+ sitios</strong> (80–120 unidades / 12 meses).",
+      contact:"Contacto",
+      contact_p1:"¿Necesitas evaluación? Dimensionamos flota, rutas y ROI.",
+      contact_p2:"Cobertura nacional (golf y resorts).",
+      wa2:"Ventas por WhatsApp", call:"Llamar", email2:"Correo",
+      f_name:"Nombre completo", f_email:"Correo", f_msg:"¿Qué propiedad(es) y área?", f_send:"Enviar",
+      foot_title:"Calidad y servicio premium",
+      foot_copy:"Reparaciones y seguro incluidos. Cobertura profesional en todo México."
+    }
+  };
+  let currentLang = localStorage.getItem("gr_lang") || "en";
 
-/* === Bilingual content === */
-const STR = {
-  en: {
-    brand: "GreenEdge Robotics · Mexico",
-    nav: {solutions:"Solutions", benefits:"Benefits", process:"Process", case:"Case Study", faq:"FAQ", contact:"Contact"},
-    eyebrow:"Premium service · Mexico",
-    h1:"Autonomous mowing for <span style='color:var(--brand)'>golf courses</span> & <span style='color:var(--brand)'>luxury resorts</span>",
-    lead:"Lower OPEX, quiet (60–67 dB), RTK-GPS precision. Fleet-ready service across Mexico.",
-    btn_wa:"Talk to Sales on WhatsApp",
-    btn_quote:"Get a quote",
-    btn_call:"Call",
-    premium:"Premium quality & service",
-    insurance:"Repairs & liability insurance included",
-    travel:"Pro team travels nationwide",
-    fast:"Fast results once approved",
-    benefits:"Benefits",
-    b1h:"Fleet-ready", b1p:"Plan multi-hectare coverage with synced routes and uptime monitoring.",
-    b2h:"RTK-GPS ready", b2p:"Straight lines and consistent cut height (10–150 mm) every pass.",
-    b3h:"Weather-resistant", b3p:"Designed for real-world conditions (IPX5–IPX6 ingress protection).",
-    b4h:"Quiet 60–67 dB", b4p:"Low noise for premium experiences at golf courses and resorts.",
-    s1:"Cutting width", s2:"Height adjust", s3:"Daily area (fleets)", s4:"Ingress protection",
-    solutions:"Solutions",
-    sol1h:"Golf courses", sol1p:"Fairways, approaches, rough. Consistency guests notice, savings you keep.",
-    sol2h:"Resorts", sol2p:"Event lawns, promenades, perimeter areas—quiet maintenance around guests.",
-    sol3h:"Multi-site operations", sol3p:"Fleet coordination, reporting, and centralized standards across properties.",
-    q1:"“Let the fairway whisper, not the mower.”",
-    q2:"“Straight lines. Straight savings.”",
-    q3:"“Quiet by design, bold in results.”",
-    process:"Process",
-    p1h:"Evaluation (15–30 min)", p1p:"Site walk & ROI: area, obstacles, charging, and savings model.",
-    p2h:"Plan", p2p:"Routes, cadence, service scope—repairs & liability insurance included.",
-    p3h:"Start fast", p3p:"Once approved, we mobilize immediately so you see results quickly and professionally.",
-    p4h:"Ongoing", p4p:"Monitoring, optimization, training, and support.",
-    case:"Case Study",
-    case_p:"Resort fairways improved guest ratings and reduced grounds OPEX by 28% after adopting autonomous mowing with RTK-GPS routes and quiet operation.",
-    btn_pdf:"Request the PDF",
-    faq:"FAQ",
-    faq1q:"What’s included?", faq1a:"Service, setup, optimization, and <b>repairs & liability insurance</b> in our packages.",
-    faq2q:"How quiet is it?", faq2a:"Typical operation is 60–67 dB—quiet enough for premium guest areas.",
-    faq3q:"Weather limits?", faq3a:"Hardware is IPX5–IPX6. We plan routes around heavy weather for performance and safety.",
-    faq4q:"How fast do you start?", faq4a:"After approval, we mobilize immediately so you see results quickly and professionally.",
-    faq5q:"Coverage in Mexico?", faq5a:"Yes—our team can fly to any golf course or resort in Mexico.",
-    contact:"Contact",
-    contact_p1:"Need an evaluation? We’ll size the fleet, routes and ROI.",
-    contact_p2:"Team can travel nationwide (golf courses & resorts).",
-    wa2:"WhatsApp Sales", call:"Call", email2:"Email us",
-    f_name:"Full name", f_email:"Email", f_msg:"What property(ies) and area?", f_send:"Send",
-    foot_title:"Premium quality & service",
-    foot_copy:"Repairs & liability insurance included. Professional, nationwide coverage across Mexico.",
-    foot_company:"GreenEdge Robotics",
-    lang:"Language",
-    call_label:"Call"
-  },
-  es: {
-    brand:"GreenEdge Robotics · México",
-    nav:{solutions:"Soluciones", benefits:"Beneficios", process:"Proceso", case:"Caso de éxito", faq:"Preguntas", contact:"Contacto"},
-    eyebrow:"Servicio premium · México",
-    h1:"Corte autónomo para <span style='color:var(--brand)'>campos de golf</span> y <span style='color:var(--brand)'>resorts de lujo</span>",
-    lead:"Menor OPEX, silencio (60–67 dB) y precisión RTK-GPS. Servicio listo para flotas en todo México.",
-    btn_wa:"Habla con Ventas en WhatsApp",
-    btn_quote:"Solicitar cotización",
-    btn_call:"Llamar",
-    premium:"Calidad y servicio premium",
-    insurance:"Reparaciones y seguro de responsabilidad incluidos",
-    travel:"Equipo profesional viaja a todo el país",
-    fast:"Resultados rápidos tras aprobación",
-    benefits:"Beneficios",
-    b1h:"Listo para flotas", b1p:"Cobertura multi-hectárea con rutas sincronizadas y monitoreo de disponibilidad.",
-    b2h:"RTK-GPS listo", b2p:"Líneas rectas y altura consistente (10–150 mm) en cada pasada.",
-    b3h:"Resistente al clima", b3p:"Diseñado para condiciones reales (protección IPX5–IPX6).",
-    b4h:"Silencioso 60–67 dB", b4p:"Bajo ruido para experiencias premium en golf y resorts.",
-    s1:"Ancho de corte", s2:"Altura", s3:"Área diaria (flotas)", s4:"Protección (IP)",
-    solutions:"Soluciones",
-    sol1h:"Campos de golf", sol1p:"Fairways, approaches y rough. Consistencia que el huésped nota y ahorros que permanecen.",
-    sol2h:"Resorts", sol2p:"Áreas de evento, paseos y perímetros—mantenimiento silencioso cerca de huéspedes.",
-    sol3h:"Operación multi-sitio", sol3p:"Coordinación de flotas, reportes y estándares centralizados entre propiedades.",
-    q1:"“Que hable el fairway, no la máquina.”",
-    q2:"“Líneas rectas. Ahorros directos.”",
-    q3:"“Silencioso por diseño, contundente en resultados.”",
-    process:"Proceso",
-    p1h:"Evaluación (15–30 min)", p1p:"Recorrido y ROI: área, obstáculos, carga y modelo de ahorro.",
-    p2h:"Plan", p2p:"Rutas, frecuencia y alcance del servicio—con reparaciones y seguro incluidos.",
-    p3h:"Inicio ágil", p3p:"Con su aprobación, arrancamos de inmediato para que vea resultados rápidos y profesionales.",
-    p4h:"Continuidad", p4p:"Monitoreo, optimización, capacitación y soporte.",
-    case:"Caso de éxito",
-    case_p:"Un resort mejoró calificaciones de huéspedes y redujo el OPEX de jardinería en 28% tras adoptar corte autónomo con rutas RTK-GPS y operación silenciosa.",
-    btn_pdf:"Solicitar el PDF",
-    faq:"Preguntas frecuentes",
-    faq1q:"¿Qué incluye?", faq1a:"Servicio, implementación y optimización; <b>reparaciones y seguro de responsabilidad</b> incluidos en nuestros paquetes.",
-    faq2q:"¿Qué tan silencioso es?", faq2a:"La operación típica es de 60–67 dB—apto para áreas premium con huéspedes.",
-    faq3q:"¿Límites por clima?", faq3a:"El hardware es IPX5–IPX6. Planeamos rutas alrededor de clima severo para rendimiento y seguridad.",
-    faq4q:"¿Qué tan rápido inician?", faq4a:"Tras la aprobación, movilizamos de inmediato para resultados rápidos y profesionales.",
-    faq5q:"¿Cobertura en México?", faq5a:"Sí—nuestro equipo puede viajar a cualquier campo de golf o resort en México.",
-    contact:"Contacto",
-    contact_p1:"¿Necesitas evaluación? Dimensionamos flota, rutas y ROI.",
-    contact_p2:"Equipo con cobertura nacional (golf y resorts).",
-    wa2:"Ventas por WhatsApp", call:"Llamar", email2:"Escríbenos",
-    f_name:"Nombre completo", f_email:"Correo", f_msg:"¿Qué propiedad(es) y área?", f_send:"Enviar",
-    foot_title:"Calidad y servicio premium",
-    foot_copy:"Reparaciones y seguro incluidos. Cobertura profesional en todo México.",
-    foot_company:"GreenEdge Robotics",
-    lang:"Idioma",
-    call_label:"Llamar"
+  function r(id, v, html=false){ const el=document.getElementById(id); if(!el) return; html ? el.innerHTML=v : el.textContent=v; }
+
+  function render(lang){
+    const t=STR[lang];
+    r("t_brand", t.brand);
+    r("t_nav_solutions", t.nav.solutions);
+    r("t_nav_benefits", t.nav.benefits);
+    r("t_nav_supplier", t.nav.supplier);
+    r("t_nav_process", t.nav.process);
+    r("t_nav_contact", t.nav.contact);
+
+    r("t_eyebrow", t.eyebrow);
+    r("t_h1", t.h1, true);
+    r("t_lead", t.lead);
+
+    r("t_btn_wa", t.btn_wa);
+    r("t_btn_call", t.btn_call);
+    r("t_btn_pdf", t.btn_pdf);
+
+    r("t_sup_eyebrow", t.sup_eyebrow);
+    r("t_sup_title", t.sup_title);
+    r("t_sup_c1h", t.sup_c1h); r("t_sup_c1p", t.sup_c1p, true);
+    r("t_sup_c2h", t.sup_c2h); r("t_sup_c2p", t.sup_c2p, true);
+    r("t_sup_c3h", t.sup_c3h); r("t_sup_c3p", t.sup_c3p, true);
+
+    r("t_gallery_kicker", lang==="en"?"In the field":"En operación");
+    r("t_gallery_title", lang==="en"?"Quiet, consistent, premium finish":"Silencioso, consistente, acabado premium");
+
+    r("t_process", lang==="en"?"How we work":"Cómo trabajamos");
+
+    r("t_contact", t.contact);
+    r("t_contact_p1", t.contact_p1);
+    r("t_contact_p2", t.contact_p2);
+    r("t_btn_wa2", t.wa2);
+    r("t_call2", t.call);
+    r("t_email2", t.email2);
+
+    r("t_f_name", t.f_name); r("t_f_email", t.f_email); r("t_f_msg", t.f_msg); r("t_f_send", t.f_send);
+
+    r("t_foot_title", t.foot_title);
+    r("t_foot_copy", t.foot_copy);
+
+    document.getElementById("langToggle").textContent = (lang==="en"?"ES":"EN");
   }
-};
 
-let currentLang = localStorage.getItem("gr_lang") || "en";
-const ids = {
-  brand:"t_brand",
-  nav:{solutions:"t_nav_solutions", benefits:"t_nav_benefits", process:"t_nav_process", case:"t_nav_case", faq:"t_nav_faq", contact:"t_nav_contact"},
-  eyebrow:"t_eyebrow", h1:"t_h1", lead:"t_lead",
-  btns:{wa1:"t_btn_wa", quote:"t_btn_quote", call:"t_btn_call"},
-  trust:{premium:"t_premium", insurance:"t_insurance", travel:"t_travel", fast:"t_fast"},
-  benefits:"t_benefits",
-  b:{b1h:"t_b1h", b1p:"t_b1p", b2h:"t_b2h", b2p:"t_b2p", b3h:"t_b3h", b3p:"t_b3p", b4h:"t_b4h", b4p:"t_b4p"},
-  s:{s1:"t_s1", s2:"t_s2", s3:"t_s3", s4:"t_s4"},
-  solutions:"t_solutions",
-  sol:{sol1h:"t_sol1h", sol1p:"t_sol1p", sol2h:"t_sol2h", sol2p:"t_sol2p", sol3h:"t_sol3h", sol3p:"t_sol3p"},
-  q:{q1:"t_q1", q2:"t_q2", q3:"t_q3"},
-  process:"t_process",
-  p:{p1h:"t_p1h", p1p:"t_p1p", p2h:"t_p2h", p2p:"t_p2p", p3h:"t_p3h", p3p:"t_p3p", p4h:"t_p4h", p4p:"t_p4p"},
-  case:"t_case", case_p:"t_case_p", btn_pdf:"t_btn_pdf",
-  faq:"t_faq",
-  fqa:{q1:"t_faq1q", a1:"t_faq1a", q2:"t_faq2q", a2:"t_faq2a", q3:"t_faq3q", a3:"t_faq3a", q4:"t_faq4q", a4:"t_faq4a", q5:"t_faq5q", a5:"t_faq5a"},
-  contact:"t_contact", contact_p1:"t_contact_p1", contact_p2:"t_contact_p2",
-  wa2:"t_btn_wa2", call2:"t_call2", email2:"t_email2",
-  f_name:"t_f_name", f_email:"t_f_email", f_msg:"t_f_msg", f_send:"t_f_send",
-  foot:{title:"t_foot_title", copy:"t_foot_copy", company:"t_foot_company"},
-  lang:"t_lang",
-  calls:{top:"t_call", sticky:"t_call3", hero:"t_btn_call"}
-};
+  function setLang(lang){ currentLang=lang; localStorage.setItem("gr_lang", lang); render(lang); }
+  document.getElementById("langToggle").addEventListener("click",()=> setLang(currentLang==="en"?"es":"en"));
 
-function render(lang){
-  const t=STR[lang];
-  document.getElementById(ids.brand).textContent=t.brand;
-  document.getElementById(ids.nav.solutions).textContent=t.nav.solutions;
-  document.getElementById(ids.nav.benefits).textContent=t.nav.benefits;
-  document.getElementById(ids.nav.process).textContent=t.nav.process;
-  document.getElementById(ids.nav.case).textContent=t.nav.case;
-  document.getElementById(ids.nav.faq).textContent=t.nav.faq;
-  document.getElementById(ids.nav.contact).textContent=t.nav.contact;
+  render(currentLang);
+  </script>
 
-  document.getElementById(ids.eyebrow).textContent=t.eyebrow;
-  document.getElementById(ids.h1).innerHTML=t.h1;
-  document.getElementById(ids.lead).textContent=t.lead;
-
-  document.getElementById(ids.btns.wa1).textContent=t.btn_wa;
-  document.getElementById(ids.btns.quote).textContent=t.btn_quote;
-  document.getElementById(ids.btns.call).textContent=t.btn_call;
-
-  document.getElementById(ids.trust.premium).textContent=t.premium;
-  document.getElementById(ids.trust.insurance).textContent=t.insurance;
-  document.getElementById(ids.trust.travel).textContent=t.travel;
-  document.getElementById(ids.trust.fast).textContent=t.fast;
-
-  document.getElementById(ids.benefits).textContent=t.benefits;
-  document.getElementById(ids.b.b1h).textContent=t.b1h; document.getElementById(ids.b.b1p).textContent=t.b1p;
-  document.getElementById(ids.b.b2h).textContent=t.b2h; document.getElementById(ids.b.b2p).textContent=t.b2p;
-  document.getElementById(ids.b.b3h).textContent=t.b3h; document.getElementById(ids.b.b3p).textContent=t.b3p;
-  document.getElementById(ids.b.b4h).textContent=t.b4h; document.getElementById(ids.b.b4p).textContent=t.b4p;
-
-  document.getElementById(ids.s.s1).textContent=t.s1;
-  document.getElementById(ids.s.s2).textContent=t.s2;
-  document.getElementById(ids.s.s3).textContent=t.s3;
-  document.getElementById(ids.s.s4).textContent=t.s4;
-
-  document.getElementById(ids.solutions).textContent=t.solutions;
-  document.getElementById(ids.sol.sol1h).textContent=t.sol1h; document.getElementById(ids.sol.sol1p).textContent=t.sol1p;
-  document.getElementById(ids.sol.sol2h).textContent=t.sol2h; document.getElementById(ids.sol.sol2p).textContent=t.sol2p;
-  document.getElementById(ids.sol.sol3h).textContent=t.sol3h; document.getElementById(ids.sol.sol3p).textContent=t.sol3p;
-
-  document.getElementById(ids.q.q1).textContent=t.q1;
-  document.getElementById(ids.q.q2).textContent=t.q2;
-  document.getElementById(ids.q.q3).textContent=t.q3;
-
-  document.getElementById(ids.process).textContent=t.process;
-  document.getElementById(ids.p.p1h).textContent=t.p1h; document.getElementById(ids.p.p1p).textContent=t.p1p;
-  document.getElementById(ids.p.p2h).textContent=t.p2h; document.getElementById(ids.p.p2p).textContent=t.p2p;
-  document.getElementById(ids.p.p3h).textContent=t.p3h; document.getElementById(ids.p.p3p).textContent=t.p3p;
-  document.getElementById(ids.p.p4h).textContent=t.p4h; document.getElementById(ids.p.p4p).textContent=t.p4p;
-
-  document.getElementById(ids.case).textContent=t.case;
-  document.getElementById(ids.case_p).textContent=t.case_p;
-  document.getElementById(ids.btn_pdf).textContent=t.btn_pdf;
-
-  document.getElementById(ids.faq).textContent=t.faq;
-  document.getElementById(ids.fqa.q1).textContent=t.faq1q; document.getElementById(ids.fqa.a1).innerHTML=t.faq1a;
-  document.getElementById(ids.fqa.q2).textContent=t.faq2q; document.getElementById(ids.fqa.a2).textContent=t.faq2a;
-  document.getElementById(ids.fqa.q3).textContent=t.faq3q; document.getElementById(ids.fqa.a3).textContent=t.faq3a;
-  document.getElementById(ids.fqa.q4).textContent=t.faq4q; document.getElementById(ids.fqa.a4).textContent=t.faq4a;
-  document.getElementById(ids.fqa.q5).textContent=t.faq5q; document.getElementById(ids.fqa.a5).textContent=t.faq5a;
-
-  document.getElementById(ids.contact).textContent=t.contact;
-  document.getElementById("t_contact_p1").textContent=t.contact_p1;
-  document.getElementById("t_contact_p2").textContent=t.contact_p2;
-
-  document.getElementById("t_btn_wa2").textContent=t.wa2;
-  document.getElementById("t_call").textContent=t.call_label;
-  document.getElementById("t_call2").textContent=t.call;
-  document.getElementById("t_call3").textContent=t.call;
-  document.getElementById("t_btn_call").textContent=t.call;
-  document.getElementById("t_email2").textContent=t.email2;
-
-  document.getElementById("t_f_name").textContent=t.f_name;
-  document.getElementById("t_f_email").textContent=t.f_email;
-  document.getElementById("t_f_msg").textContent=t.f_msg;
-  document.getElementById("t_f_send").textContent=t.f_send;
-
-  document.getElementById("t_foot_title").textContent=t.foot_title;
-  document.getElementById("t_foot_copy").textContent=t.foot_copy;
-  document.getElementById("t_foot_company").textContent=t.foot_company;
-
-  document.getElementById("t_lang").textContent=t.lang;
-
-  // Toggle buttons text
-  document.getElementById("langToggle").textContent = (lang==="en"?"ES":"EN");
-  document.getElementById("langToggleFoot").textContent = (lang==="en"?"ES":"EN");
-}
-
-function setLang(lang){
-  currentLang=lang; localStorage.setItem("gr_lang", lang); render(lang);
-}
-
-document.getElementById("langToggle").addEventListener("click",()=> setLang(currentLang==="en"?"es":"en"));
-document.getElementById("langToggleFoot").addEventListener("click",()=> setLang(currentLang==="en"?"es":"en"));
-
-render(currentLang);
-</script>
+  <!-- Schema.org (Organization & Service) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "GreenEdge Robotics",
+    "url": "https://greenedgerobotics.com",
+    "image": "https://greenedgerobotics.com/img/hero-resort.webp",
+    "description": "Premium autonomous mowing for golf courses and luxury resorts across Mexico. Nationwide deployment, insured service.",
+    "areaServed": "MX",
+    "telephone": "+52 322 170 2113",
+    "email": "mateostonem@icloud.com",
+    "sameAs": []
+  }
+  </script>
 </body>
 </html>
